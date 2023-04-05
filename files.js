@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const dirPath = path.join(__dirname, "date_time");
+const router = require('express').Router();
 
 let ts = Date.now();
 
@@ -29,6 +30,10 @@ const file_name =
   date + "-" + month + "-" + year + " " + hours + "-" + minutes + "-" + seconds;
 
 
+
+  
+
+
 fs.writeFile(
   `${dirPath}/${file_name}.txt`,
   `Date: ${currentDate} \n Time: ${currentTime} \n TimeStamp: ${Math.floor(
@@ -41,3 +46,5 @@ fs.writeFile(
 );
 
 
+
+module.exports = router

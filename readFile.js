@@ -1,9 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 const dirPath = path.join(__dirname, "date_time");
+const router = require('express').Router();
 
-const fs = require('fs');
-//joining path of directory 
 
 //passsing directoryPath and callback function
 fs.readdir(dirPath, function (err, files) {
@@ -17,5 +16,7 @@ fs.readdir(dirPath, function (err, files) {
         console.log(file); 
     });
 });
+
+module.exports = router
 
 
