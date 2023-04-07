@@ -1,22 +1,28 @@
 const fs = require("fs");
 const path = require("path");
 const dirPath = path.join(__dirname, "date_time");
-const router = require('express').Router();
-
+const router = require("express").Router();
 
 //passsing directoryPath and callback function
-fs.readdir(dirPath, function (err, files) {
-    //handling error
-    if (err) {
-        return console.log('Unable to scan directory: ' + err);
-    } 
-    //listing all files using forEach
-    files.forEach(function (file) {
-        // Do whatever you want to do with the file
-        console.log(file); 
-    });
+function getFiles (dir, files_){
+    files_ = files_ || [];
+    var files = fs.readdirSync(dir);
+    for (var i in files){
+        var name = dir + '/' + files[i];
+        if (fs.statSync(name).isDirectory()){
+            getFiles(name, files_);
+        } else {
+            files_.push(name);
+        }
+    }
+    return files_;
+}
+router.get("/", function (req, res) {
+  var data = getFiles(dirPath);
+
+  
+  console.log(getFiles(dirPath));
+  res.send(data);
 });
 
-module.exports = router
-
-
+module.exports = router;
