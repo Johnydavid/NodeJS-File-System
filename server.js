@@ -1,34 +1,19 @@
-
-const express = require('express');
+const express = require("express");
 const app = express();
-require('dotenv').config();
+require("dotenv").config();
 
-const newFile = require("./f");
+const newFile = require("./createFile");
 const read = require("./readFile");
-
-
-
-
 
 //  Middleware to create web server
 
 app.use(express.json());
-// app.use(cors());
 
 // Creating port for server
 const port = Number(process.env.PORT) || 3000;
-app.listen(port, ()=>console.log(`Server listening on ${port}`));
-
+app.listen(port, () => console.log(`Server listening on ${port}`));
 
 // Routes
 
-app.use('/api/new', newFile);
-app.use('/api/read', read);
-
-
-
-
-
-
-
-
+app.use("/api/create", newFile);
+app.use("/api/read", read);

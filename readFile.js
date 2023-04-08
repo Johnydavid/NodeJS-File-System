@@ -18,11 +18,10 @@ function getFiles (dir, files_){
     return files_;
 }
 router.get("/", function (req, res) {
-  var data = getFiles(dirPath);
-
-  
+  var data = getFiles(dirPath);  
   console.log(getFiles(dirPath));
   res.send(data);
 });
+
 
 module.exports = router;

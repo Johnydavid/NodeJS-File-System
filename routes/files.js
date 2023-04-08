@@ -27,11 +27,8 @@ const currentTime = hours + ":" + minutes + ":" + seconds;
 
 // prints date & time in DD-MM-YYYY HH:MM:SS format
 const file_name =
-  date + "-" + month + "-" + year + " " + hours + "-" + minutes + "-" + seconds;
+  date + "-" + month + "-" + year + " " + hours + "-" + minutes + "-" + seconds; 
 
-
-
-  
 
 
 fs.writeFile(
@@ -41,7 +38,7 @@ fs.writeFile(
   )}`,
   function (err, data) {
     if (err) throw err;
-    console.log("File is created successfully.");
+    console.log(`${file_name}.txt` + "  is created successfully.");
   }
 );
 
