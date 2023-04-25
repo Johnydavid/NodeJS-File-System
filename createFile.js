@@ -26,18 +26,17 @@ const currentTime = hours + ":" + minutes + ":" + seconds;
 const file_name =
   date + "-" + month + "-" + year + " " + hours + "-" + minutes + "-" + seconds;
 
-
-router.get("/", function (req, res) {
+router.post("/", function (req, res) {
   fs.writeFile(
     `${dirPath}/${file_name}.txt`,
-    `Date: ${currentDate} \n Time: ${currentTime} \n TimeStamp: ${Math.floor(
-      ts / 1000
-    )}`,
+    req.body.Date,
+    // `Date: ${currentDate} \n Time: ${currentTime} \n TimeStamp: ${Math.floor(
+    //   ts / 1000
+    // )}`
     function (err, data) {
       if (err) throw err;
       console.log(`${file_name}.txt` + "  is created successfully.");
-     res.send(`${file_name}.txt` + "  is created successfully.");
-     
+      res.send(`${file_name}.txt` + "  is created successfully.");
     }
   );
 });
